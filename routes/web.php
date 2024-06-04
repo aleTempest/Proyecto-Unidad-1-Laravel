@@ -4,6 +4,7 @@ use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', ProductsController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('items', ItemsController::class);
+    Route::resource('clients', ClientController::class);
 });
 
 require __DIR__.'/auth.php';

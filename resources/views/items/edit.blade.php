@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="flex justify-center">
-        <form class="w-full max-w-lg" action="{{ route('items.store') }}" method="POST">
+        <form class="w-full max-w-lg" action="{{ route('items.update', $item->id) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="mb-6">
                 <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="category_id">
                     Product

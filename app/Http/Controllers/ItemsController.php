@@ -34,18 +34,21 @@ class ItemsController extends Controller
             ->withSuccess('New item updated');
     }
     
+    // Editar un item del inventario
     public function edit(Items $item): View
     {
         $products = Product::all();
         return view('items.edit', compact('item', 'products'));
     }
     
+    // Mostrar los datos
     public function show(Items $item): View
     {
         $products = Product::all();
         return view('items.show', compact('item','products'));
     }
     
+    // Guardar un nuevo item en el inventario
     public function store(StoreItemRequest $request): RedirectResponse
     {
         Items::create($request->validated());
@@ -53,7 +56,7 @@ class ItemsController extends Controller
             ->withSuccess('New item updated');
     }
     
-    public function update(UpdateItemRequest $request, Items $item): View
+    public function update(UpdateItemRequest $request, Items $item): RedirectResponse
     {
         $item->update($request->validated());
         return redirect()->route('items.index')
