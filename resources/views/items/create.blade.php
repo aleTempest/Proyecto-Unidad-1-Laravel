@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="flex justify-center">
-        <form class="w-full max-w-lg" action="{{ route('inventory.store') }}" method="POST">
+        <form class="w-full max-w-lg" action="{{ route('items.store') }}" method="POST">
             @csrf
             <div class="mb-6">
                 <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="category_id">

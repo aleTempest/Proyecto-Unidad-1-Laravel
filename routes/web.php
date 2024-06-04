@@ -24,10 +24,11 @@ Route::get('/products', function (){
     return view('products.index');
 })->middleware(['auth', 'verified'])->name('products');
 
+// Todas las rutas relacionadas con el CRUD van dentro de un Auth
 Route::middleware('auth')->group(function () {
     Route::resource('products', ProductsController::class);
     Route::resource('categories', CategoryController::class);
-    Route::resource('inventory', ItemsController::class);
+    Route::resource('items', ItemsController::class);
 });
 
 require __DIR__.'/auth.php';
