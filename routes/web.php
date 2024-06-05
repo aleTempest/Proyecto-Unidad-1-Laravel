@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\SalesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,16 +22,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/products', function (){
-    return view('products.index');
-})->middleware(['auth', 'verified'])->name('products');
-
 // Todas las rutas relacionadas con el CRUD van dentro de un Auth
 Route::middleware('auth')->group(function () {
     Route::resource('products', ProductsController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('items', ItemsController::class);
     Route::resource('clients', ClientController::class);
+    Route::resource('sales', SalesController::class);
 });
 
 require __DIR__.'/auth.php';

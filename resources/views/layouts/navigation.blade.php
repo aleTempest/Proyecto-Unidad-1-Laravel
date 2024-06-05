@@ -15,20 +15,20 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products')">
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         {{ __('Products') }}
                     </x-nav-link>
                     <!-- La ruta se queda en dashboard hasta que realmente exista-->
-                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories')">
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
                         {{ __('Categories') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('items.index')" :active="request()->routeIs('inventory')">
+                    <x-nav-link :href="route('items.index')" :active="request()->routeIs('items.index')">
                         {{ __('Items') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients')">
+                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.index')">
                         {{ __('Clients') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('sales')">
+                    <x-nav-link :href="route('sales.index')" :active="request()->routeIs('sales.index')">
                         {{ __('Sales') }}
                     </x-nav-link>
                 </div>
