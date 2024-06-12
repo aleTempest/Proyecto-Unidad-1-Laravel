@@ -38,7 +38,7 @@ class SalesController extends Controller
     public function store(StoreSaleRequest $request): RedirectResponse
     {
         Sale::create($request->validated());
-        return redirect()->route('sales.index');
+        return to_route('sales.index');
     }
 
     /**
@@ -68,7 +68,7 @@ class SalesController extends Controller
     {
         $sale->update($request->validated());
 
-        return redirect()->route('sales.index');
+        return to_route('sales.index');
     }
 
     /**
@@ -77,8 +77,6 @@ class SalesController extends Controller
     public function destroy(Sale $sale): RedirectResponse
     {
         $sale->delete();
-
-        return redirect()->route('sales.index')
-            ->withSuccess('Sale deleted successfully.');
+        return to_route('sales.index');
     }
 }

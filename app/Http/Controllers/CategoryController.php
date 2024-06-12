@@ -23,9 +23,7 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request): RedirectResponse
     {
         Category::create($request->validated());
-
-        return redirect()->route('categories.index')
-            ->withSuccess('New category added');
+        return to_route('categories.index');
     }
 
     public function show(Category $category): View
@@ -41,14 +39,12 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category): RedirectResponse
     {
         $category->update($request->validated());
-        return redirect()->route('categories.index')
-            ->withSuccess('Category updated');
+        return to_route('categories.index');
     }
 
     public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
-        return redirect()->route('categories.index')
-            ->withSuccess('Category deleted');
+        return to_route('categories.index');
     }
 }

@@ -26,7 +26,6 @@ class ProductsController extends Controller
      */
     public function create(): View
     {
-        // esta variable es necesaria para seleccionar una categoría desde el formulario
         $categories = Category::all();
         return view('products.create', compact('categories'));
     }
@@ -38,8 +37,7 @@ class ProductsController extends Controller
     {
         Product::create($request->validated());
 
-        return redirect()->route('products.index')
-            ->withSuccess('New product updated');
+        return to_route('products.index');
     }
 
     /**
@@ -67,8 +65,7 @@ class ProductsController extends Controller
     {
         $product->update($request->validated());
 
-        return redirect()->route('products.index')
-            ->withSuccess('Product is updated successfully.');
+        return to_route('products.index');
     }
 
     /**
@@ -78,7 +75,6 @@ class ProductsController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('products.index')
-            ->withSuccess('Product is deleted successfully.');
+        return to_route('products.index');
     }
 }
