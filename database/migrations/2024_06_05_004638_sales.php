@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::dropIfExists('sales');
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->references('product_id')->on('products')->onDelete('cascade');
-            $table->foreignId('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreignId('product_id')->references('product_id')->on('products')->cascadeOnDelete();
+            $table->foreignId('client_id')->references('id')->on('clients')->cascadeOnDelete();
             $table->date('sale_date');
             $table->decimal('IVA', 8, 2);
             $table->decimal('total', 10, 2);

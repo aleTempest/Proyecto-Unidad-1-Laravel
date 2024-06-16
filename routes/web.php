@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\TemplatesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,13 @@ Route::middleware('auth')->group(function () {
 
 // Todas las rutas relacionadas con el CRUD van dentro de un Auth
 Route::middleware('auth')->group(function () {
+    // Rutas temporales que contienen las plantillas
+    Route::get('/templates/sellers', [TemplatesController::class, 'sellers_template']);
+    Route::get('/templates/providers', [TemplatesController::class, 'providers_template']);
+    Route::get('/templates/quotes', [TemplatesController::class, 'quotes_template']);
+
+
+    Route::resource('templates', TemplatesController::class);
     Route::resource('products', ProductsController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('items', ItemsController::class);

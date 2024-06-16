@@ -28,7 +28,7 @@
                             <tr class="border-b dark:border-neutral-700">
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td class="text-center">{{ $product->name }}</td>
-                                <td class="text-center">pendiente</td> <!-- Update this to show the actual category -->
+                                <td class="text-center">{{ $product->category->name }}</td>
                                 <td class="text-center">{{ $product->colors }}</td>
                                 <td class="text-center">{{ $product->purchase_date }}</td>
                                 <td class="text-center">{{ $product->pv }}</td>

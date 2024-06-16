@@ -22,9 +22,7 @@ return new class extends Migration
         });
         Schema::create('products', function (Blueprint $table) {
             $table->id('product_id')->primary();
-            // si se elimina una categoría el campo se pone nulo, por eso la columna se marca como nullable para poder
-            // admitir esa constraint
-            $table->foreignId('cat_id')->nullable()->references('cat_id')->on('categories')->nullOnDelete();
+            $table->foreignId('cat_id')->references('cat_id')->on('categories')->cascadeOnDelete();
             $table->string('name');
             $table->decimal('pv',8,2)->default(0);
             $table->decimal('pc',8,2)->default(0);
