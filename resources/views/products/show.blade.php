@@ -3,7 +3,6 @@
 
     <div class="flex justify-center">
         <form class="w-full max-w-lg" action="{{ route('products.store') }}" method="POST">
-            @csrf
             <div class="mb-6">
                 <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="category_id">
                     Category
@@ -63,7 +62,6 @@
                 </label>
                 <textarea value="{{ $product->long_desc }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="grid-long_desc" rows="4" placeholder="Write a long desc. here..." name="long_desc" disabled></textarea>
             </div>
-            <input value="Save Changes" type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
         </form>
     </div>
 @endsection
