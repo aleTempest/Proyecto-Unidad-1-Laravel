@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('clients');
         Schema::create('clients', function(Blueprint $table) {
-            $table->id();
+            $table->id('client_id')->primary();
             $table->string('name');
             $table->string('email');
             $table->string('phone');
