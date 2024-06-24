@@ -19,7 +19,7 @@ class QuoteController extends Controller
      */
     public function index(): View
     {
-        $quotes = Quote::with(['product', 'client'])->get();
+        $quotes = Quote::all();
         return view('quotes.index', compact('quotes'));
     }
 

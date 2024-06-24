@@ -16,4 +16,14 @@ class Quote extends Model
         'validity',
         'comments',
     ];
+
+    public function products(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function clients(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

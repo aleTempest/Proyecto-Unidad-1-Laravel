@@ -27,15 +27,9 @@ Route::middleware('auth')->group(function () {
 
 // Todas las rutas relacionadas con el CRUD van dentro de un Auth
 Route::middleware('auth')->group(function () {
-    // Rutas temporales que contienen las plantillas
-    Route::get('/templates/sellers', [TemplatesController::class, 'sellers_template']);
-    Route::get('/templates/providers', [TemplatesController::class, 'providers_template']);
-    Route::get('/templates/quotes', [TemplatesController::class, 'quotes_template']);
-
-
     Route::resource('quotes', QuoteController::class);
     Route::resource('providers', ProviderController::class);
-    Route::resource('templates', TemplatesController::class);
+    // Route::resource('templates', TemplatesController::class);
     Route::resource('products', ProductsController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('items', ItemsController::class);
