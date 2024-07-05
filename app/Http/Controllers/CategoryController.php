@@ -15,6 +15,7 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('categories.index', compact('categories'));
     }
+
     public function create() : View
     {
         return view('categories.create');
@@ -33,7 +34,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category): View
     {
-        return view('categories.edit', compact('category'));
+        return view('catsupp'egories.edit', compact('category'));
     }
 
     public function update(UpdateCategoryRequest $request, Category $category): RedirectResponse
