@@ -23,10 +23,13 @@ class StoreClientRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:250',
-            'email' => 'required|max:250',
-            'phone' => 'required|max:250',
-            'address' => 'required|max:250',
-            'rfc' => 'required|max:250',
+            'email' => 'required|string|max:250',
+            'phone' => 'required|string|max:250',
+            'address' => 'required|string|max:250',
+            'rfc' => 'required|string|max:250',
+            'business_name' => 'required|string|max:250',
+            'postal_code' => 'required|string|max:250',
+            'tax_regime' => 'required|string|max:250'
         ];
     }
 }

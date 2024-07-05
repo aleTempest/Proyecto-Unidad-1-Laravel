@@ -1,41 +1,50 @@
 @extends('layouts.app')
 @section('content')
-    <div class="flex justify-center">
-        <form class="w-full max-w-lg" action="{{ route('clients.update', $client->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-purchase_date">
-                        Name
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="name" value="{{ $client->name }}" disabled>
-                </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-purchase_date">
-                        Email
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="email" value="{{ $client->email }}" disabled>
-                </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-purchase_date">
-                        Phone
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="phone" value="{{ $client->phone }}" disabled>
-                </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-purchase_date">
-                        Address
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="address" value="{{ $client->address }}" disabled>
-                </div>
-                <div class="w-full px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-purchase_date">
-                        RFC
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="rfc" value="{{ $client->rfc }}" disabled>
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="flex justify-center -mx-3">
+            <div class="w-full max-w-full px-3 mt-6 md:w-7/12 md:flex-none">
+                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="p-6 px-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
+                        <h6 class="mb-0">Client</h6>
+                    </div>
+                    <div class="flex-auto p-4 pt-6">
+                        <div class="mb-6">
+                            <label for="name" class="block text-sm font-medium leading-5 text-gray-700">Name:</label>
+                            <p id="name" class="text-sm leading-5 text-gray-900">{{ $client->name }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium leading-5 text-gray-700">Email:</label>
+                            <p id="email" class="text-sm leading-5 text-gray-900">{{ $client->email }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label for="phone" class="block text-sm font-medium leading-5 text-gray-700">Phone Number:</label>
+                            <p id="phone" class="text-sm leading-5 text-gray-900">{{ $client->phone }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label for="address" class="block text-sm font-medium leading-5 text-gray-700">Address:</label>
+                            <p id="address" class="text-sm leading-5 text-gray-900">{{ $client->address }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label for="rfc" class="block text-sm font-medium leading-5 text-gray-700">RFC:</label>
+                            <p id="rfc" class="text-sm leading-5 text-gray-900">{{ $client->rfc }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label for="business_name" class="block text-sm font-medium leading-5 text-gray-700">Business Name:</label>
+                            <p id="business_name" class="text-sm leading-5 text-gray-900">{{ $client->business_name }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label for="postal_code" class="block text-sm font-medium leading-5 text-gray-700">Postal Code:</label>
+                            <p id="postal_code" class="text-sm leading-5 text-gray-900">{{ $client->postal_code }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label for="tax_regime" class="block text-sm font-medium leading-5 text-gray-700">Tax Regime:</label>
+                            <p id="tax_regime" class="text-sm leading-5 text-gray-900">{{ $client->tax_regime }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
+</div>
 @endsection

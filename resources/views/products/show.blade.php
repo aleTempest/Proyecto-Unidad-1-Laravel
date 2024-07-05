@@ -1,67 +1,51 @@
 @extends('layouts.app')
 @section('content')
-
-    <div class="flex justify-center">
-        <form class="w-full max-w-lg" action="{{ route('products.store') }}" method="POST">
-            <div class="mb-6">
-                <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="category_id">
-                    Category
-                </label>
-                <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="category_id" name="cat_id" disabled>
-                    <option value="">Select a category</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->cat_id }}" {{ $category->cat_id == $product->cat_id ? 'selected' : '' }}>
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-6">
-                <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-name">
-                    Product Name
-                </label>
-                <input value="{{ $product->name }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-name" type="text" placeholder="Laptop" name="name" disabled>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-colors">
-                        Colors
-                    </label>
-                    <input value="{{ $product->colors }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-colors" type="text" placeholder="Gray" name="colors" disabled>
-                </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-purchase_date">
-                        Purchase Date
-                    </label>
-                    <input value="{{ $product->purchase_date }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="purchase_date" disabled>
-                </div>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/3 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-pv">
-                        Sale Price
-                    </label>
-                    <input value="{{ $product->pv }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-pv" type="text" placeholder="17.00" name="pv" disabled>
-                </div>
-                <div class="w-full md:w-1/3 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-pc">
-                        Purchase Price
-                    </label>
-                    <input value="{{ $product->pc }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-pc" type="text" placeholder="21.00" name="pc" disabled>
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="flex justify-center -mx-3">
+            <div class="w-full max-w-full px-3 mt-6 md:w-7/12 md:flex-none">
+                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="p-6 px-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
+                        <h6 class="mb-0">Product Details</h6>
+                    </div>
+                    <div class="flex-auto p-4 pt-6">
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium leading-5 text-gray-700">Name:</label>
+                            <p class="mt-1 text-sm leading-5 text-gray-900">{{ $product->name }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium leading-5 text-gray-700">Category Name:</label>
+                            <p class="mt-1 text-sm leading-5 text-gray-900">{{ $product->category->name }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium leading-5 text-gray-700">Colors:</label>
+                            <p class="mt-1 text-sm leading-5 text-gray-900">{{ $product->colors }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium leading-5 text-gray-700">Purchase Date:</label>
+                            <p class="mt-1 text-sm leading-5 text-gray-900">{{ $product->purchase_date }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium leading-5 text-gray-700">Purchase Price:</label>
+                            <p class="mt-1 text-sm leading-5 text-gray-900">{{ $product->purchase_price }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium leading-5 text-gray-700">Purchase Date:</label>
+                            <p class="mt-1 text-sm leading-5 text-gray-900">{{ $product->sale_price }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium leading-5 text-gray-700">Short desc.</label>
+                            <p class="mt-1 text-sm leading-5 text-gray-900">{{ $product->short_desc }}</p>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium leading-5 text-gray-700">Long desc.</label>
+                            <p class="mt-1 text-sm leading-5 text-gray-900">{{ $product->long_desc }}</p>
+                        </div>
+                        <a href="{{ route('products.edit', $product->id) }}" class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Edit</a>
+                    </div>
                 </div>
             </div>
-            <div class="mb-6">
-                <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-short_desc">
-                    Short Description
-                </label>
-                <input value="{{ $product->short_desk }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="grid-short_desc" type="text" placeholder="Write a short desc. here..." name="short_desc" disabled>
-            </div>
-            <div class="mb-6">
-                <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-long_desc">
-                    Long Description
-                </label>
-                <textarea value="{{ $product->long_desc }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="grid-long_desc" rows="4" placeholder="Write a long desc. here..." name="long_desc" disabled></textarea>
-            </div>
-        </form>
+        </div>
     </div>
+</div>
 @endsection

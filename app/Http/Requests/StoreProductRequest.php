@@ -26,10 +26,10 @@ class StoreProductRequest extends FormRequest
             'name' => 'required|string|max:250',
             'colors' => 'required|string|max:100',
             'purchase_date' => 'required|date',
-            'pv' => 'required|numeric|min:0',
-            'pc' => 'required|numeric|min:0',
+            'purchase_price' => 'required|numeric|min:0',
+            'sale_price' => 'required|numeric|min:0',
             'short_desc' => 'required|string|max:300',
-            'long_desc' => 'required|string|max:800',
+            'long_desc' => 'required|string|max:800'
         ];
     }
 }

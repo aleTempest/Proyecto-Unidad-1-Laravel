@@ -22,9 +22,19 @@ class StoreItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => 'required|exists:products,product_id',
+            'product_id' => 'required|exists:products,id',
             'in_date' => 'required|date',
-            'out_date' => 'required|date',
+            'out_date' => 'required|date'
+        ];
+    }
+    
+    // Verifica que la fecha de entrada no pueda ser mayor a la de salirda y que la fecha de salida no sea
+    // menor a la de salida. https://laravel.com/docs/11.x/validation
+    public function messages()
+    {
+        return [
+            'in_date.before_or_equal' => 'Invalid date',
+            'out_date.after_or_equal' => 'Invalid date'
         ];
     }
 }

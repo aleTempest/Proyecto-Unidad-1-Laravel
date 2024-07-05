@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
-    
+
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',
@@ -16,5 +16,8 @@ class Client extends Model
         'phone',
         'address',
         'rfc',
+        'business_name',
+        'postal_code',
+        'tax_regime'
     ];
 }

@@ -1,70 +1,52 @@
 @extends('layouts.app')
 @section('content')
-
-    <div class="flex justify-center">
-        <form class="w-full max-w-lg" action="{{ route('products.update', $product->product_id) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="mb-6">
-                <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="category_id">
-                    Category
-                </label>
-                <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="category_id" name="cat_id" required>
-                    <option value="">Select a category</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->cat_id }}" {{ $category->cat_id == $product->cat_id ? 'selected' : '' }}>
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-6">
-                <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-name">
-                    Product Name
-                </label>
-                <input value="{{ $product->name }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-name" type="text" placeholder="Laptop" name="name" required>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-colors">
-                        Colors
-                    </label>
-                    <input value="{{ $product->colors }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-colors" type="text" placeholder="Gray" name="colors" required>
-                </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-purchase_date">
-                        Purchase Date
-                    </label>
-                    <input value="{{ $product->purchase_date }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="purchase_date" required>
-                </div>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/3 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-pv">
-                        Sale Price
-                    </label>
-                    <input value="{{ $product->pv }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-pv" type="text" placeholder="17.00" name="pv" required>
-                </div>
-                <div class="w-full md:w-1/3 px-3">
-                    <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-pc">
-                        Purchase Price
-                    </label>
-                    <input value="{{ $product->pc }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-pc" type="text" placeholder="21.00" name="pc" required>
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="flex justify-center -mx-3">
+            <div class="w-full max-w-full px-3 mt-6 md:w-7/12 md:flex-none">
+                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="p-6 px-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
+                        <h6 class="mb-0">Edit Product</h6>
+                    </div>
+                    <div class="flex-auto p-4 pt-6">
+                        <form class="w-full max-w-lg" action="{{ route('products.update', $product->cat_id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="mb-6">
+                                <select name="cat_id" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                                    <option value="{{ $product->category->cat_id }}" disabled>{{ $product->category->name }}</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->cat_id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <input type="text" name="name" value="{{ $product->name }}" placeholder="Name" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                            </div>
+                            <div class="mb-6">
+                                <input type="text" name="colors" value="{{ $product->colors }}" placeholder="Colors" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                            </div>
+                            <div class="mb-6">
+                                <input type="date" name="purchase_date" value="{{ $product->purchase_date }}" placeholder="Purchase Date" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                            </div>
+                            <div class="mb-6">
+                                <input type="number" name="sale_price" value="{{ $product->sale_price }}" placeholder="Sale Price" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                            </div>
+                            <div class="mb-6">
+                                <input type="number" name="purchase_price" value="{{ $product->purchase_price }}" placeholder="Purchase Price" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                            </div>
+                            <div class="mb-6">
+                                <input type="text" name="short_desc" value="{{ $product->short_desc }}" placeholder="Short Description" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                            </div>
+                            <div class="mb-6 md:w-full">
+                                <textarea name="long_desc" rows="5" placeholder="Write your thoughts here..." class="focus:shadow-soft-primary-outline min-h-unset text-sm leading-5.6 ease-soft block h-auto w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">{{ $product->long_desc }}</textarea>
+                            </div>
+                            <button type="submit" class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Save</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="mb-6">
-                <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-short_desc">
-                    Short Description
-                </label>
-                <input value="{{ $product->short_desc }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="grid-short_desc" type="text" placeholder="Write a short desc. here..." name="short_desc" required>
-            </div>
-            <div class="mb-6">
-                <label class="dark:text-gray-400 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-long_desc">
-                    Long Description
-                </label>
-                <textarea class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="grid-long_desc" rows="4" placeholder="Write a long desc. here..." name="long_desc" required>{{ $product->long_desc }}</textarea>
-            </div>
-            <input value="Save Changes" type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-        </form>
+        </div>
     </div>
+</div>
 @endsection

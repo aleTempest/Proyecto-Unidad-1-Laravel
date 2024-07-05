@@ -22,9 +22,19 @@ class UpdateItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => 'required|exists:products,product_id',
-            'in_date' => 'required|date',
-            'out_date' => 'required|date',
+            'product_id' => 'required|exists:products,id',
+            'in_date' => 'required|date|before_or_equal:out_date',
+            'out_date' => 'required|date|after_or_equal:in_date'
+        ];
+    }
+
+    // Verifica que la fecha de entrada no pueda ser mayor a la de salirda y que la fecha de salida no sea
+    // menor a la de salida. https://laravel.com/docs/11.x/validation
+    public function error()
+    {
+        return [
+            'in_date.before_or_equal' => 'Invalid date',
+            'out_date.after_or_equal' => 'Invalid date'
         ];
     }
 }

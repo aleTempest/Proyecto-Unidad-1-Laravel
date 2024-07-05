@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'product_id';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'cat_id',
         'name',
         'colors',
         'purchase_date',
-        'pv',
-        'pc',
+        'sale_price',
+        'purchase_price',
         'short_desc',
         'long_desc'
     ];
